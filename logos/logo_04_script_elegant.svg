@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 280" width="600" height="280">
+  <!-- Logo 04: Script Elegant - 筆記体風にTSFを横並びで優雅に -->
+  <defs>
+    <style>
+      .script { font-family: 'Snell Roundhand', 'Zapfino', 'Edwardian Script ITC', cursive; }
+      .text-sub { font-family: 'Didot', 'Bodoni MT', serif; letter-spacing: 5px; }
+    </style>
+  </defs>
+
+  <!-- Subtle background -->
+  <rect width="600" height="280" fill="#fdfcf8"/>
+
+  <!-- Top decorative line with diamond -->
+  <line x1="120" y1="40" x2="270" y2="40" stroke="#b8860b" stroke-width="0.5"/>
+  <rect x="295" y="36" width="8" height="8" fill="#b8860b" transform="rotate(45 299 40)"/>
+  <line x1="328" y1="40" x2="480" y2="40" stroke="#b8860b" stroke-width="0.5"/>
+
+  <!-- TSF in elegant script -->
+  <text x="300" y="138" text-anchor="middle" class="script" font-size="100" fill="#1a1a1a">TSF</text>
+
+  <!-- Underline flourish -->
+  <path d="M140 153 C185 163 240 158 300 153 C360 148 410 153 460 148"
+        fill="none" stroke="#b8860b" stroke-width="1.5" stroke-linecap="round"/>
+  <path d="M430 146 C442 142 452 148 462 148 C467 148 470 144 467 140"
+        fill="none" stroke="#b8860b" stroke-width="1" stroke-linecap="round"/>
+
+  <!-- Brand name - 1.5倍 (11 → 16.5) -->
+  <text x="300" y="198" text-anchor="middle" class="text-sub" font-size="16.5" fill="#1a1a1a">TSUBURANO SWEETS FACTORY</text>
+
+  <!-- Bottom decorative elements -->
+  <line x1="150" y1="222" x2="450" y2="222" stroke="#1a1a1a" stroke-width="0.3"/>
+  <text x="300" y="248" text-anchor="middle" class="text-sub" font-size="8" fill="#999">KYOTO</text>
+</svg>

@@ -1,0 +1,44 @@
+# Source files (not needed for website)
+extract_images.py
+pamphlet.pdf
+tsf-send/
+*.zip
+
+# Source images (Japanese filenames - already processed into images/)
+ホイロ.jpeg
+工場オーブン.JPG
+工場内観.JPG
+工場外観.jpg
+焙煎機.jpg
+
+# Unused images
+images/hero-bg-original.jpg
+images/fullpage*.png
+images/page*
+images/washi-texture.png
+images/oem-expertise.jpg
+images/oem-expertise-3.jpg
+images/hoiro.jpg
+images/roaster.jpg
+images/kyoto-sakura-night.jpg
+images/kyoto-store-exterior.jpg
+images/factory-exterior-small.jpg
+images/factory-exterior.jpg
+images/kaiseki-bento.jpg
+images/kaiseki-cuisine.jpg
+images/roll-cake.jpg
+images/castella-cut.jpg
+
+# Logo dev files
+logos/preview.html
+logos/preview_revised.html
+logos/logo_01_monogram_classic.svg
+logos/logo_02_shield_emblem.svg
+logos/logo_03_art_nouveau.svg
+logos/logo_04_revised.svg
+logos/logo_05_diamond_interlocked.svg
+logos/logo_06_parisian_badge.svg
+logos/logo_07_stacked_minimal.svg
+logos/logo_08_seal_wax.svg
+logos/logo_09_arch_frame.svg
+logos/logo_10_intertwined_modern.svg

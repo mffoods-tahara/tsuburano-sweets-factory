@@ -1,0 +1,2243 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TSUBURANO SWEETS FACTORY | つぶら乃スイーツファクトリー</title>
+  <meta name="description" content="つぶら乃スイーツファクトリー｜京都の伝統と革新が生み出す、こだわりの和スイーツ。自社ブランド「つぶら乃」の製造およびOEM受託製造。株式会社緑歩園。">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@200;300;400;500;700&family=Noto+Serif+JP:wght@200;300;400;500;600;700&family=Shippori+Mincho:wght@400;500;600;700&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --cream: #F7F2EB;
+      --cream-warm: #F0E8DB;
+      --cream-deep: #E8DDCE;
+      --washi: #FAF6F0;
+      --ink: #2C2418;
+      --ink-light: #5A4E3C;
+      --ink-muted: #8A7D6B;
+      --gold: #B8965A;
+      --gold-light: #D4B87C;
+      --gold-dark: #967640;
+      --sakura: #E8C4C4;
+      --sakura-light: #F2E0E0;
+      --sakura-deep: #D4A0A0;
+      --matcha: #7B9E6B;
+      --matcha-light: #A8C49A;
+      --matcha-bg: #E8F0E4;
+      --hojicha: #8B6E4E;
+      --hojicha-light: #B8A088;
+      --white: #FFFFFF;
+      --border: #DDD0C0;
+      --font-mincho: 'Shippori Mincho', 'Noto Serif JP', 'Yu Mincho', 'HiraMinProN-W3', serif;
+      --font-gothic: 'Noto Sans JP', 'Hiragino Sans', 'Yu Gothic', sans-serif;
+      --font-western: 'Cormorant Garamond', Georgia, serif;
+      --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+      --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
+    }
+
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    html { scroll-behavior: smooth; font-size: 16px; }
+
+    body {
+      font-family: var(--font-gothic);
+      color: var(--ink);
+      background-color: var(--washi);
+      line-height: 1.8;
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ===== Washi Paper Texture ===== */
+    body::before {
+      content: '';
+      position: fixed;
+      top: 0; left: 0; width: 100%; height: 100%;
+      pointer-events: none;
+      z-index: 0;
+      opacity: 0.03;
+      background-image:
+        url("data:image/svg+xml,%3Csvg width='100' height='100' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100' height='100' filter='url(%23n)' opacity='0.5'/%3E%3C/svg%3E");
+    }
+
+    /* ===== Language Switcher ===== */
+    .lang-switcher {
+      position: fixed;
+      top: 24px;
+      right: 24px;
+      z-index: 1001;
+      display: flex;
+      gap: 1px;
+      background: rgba(255,255,255,0.92);
+      border-radius: 2px;
+      padding: 3px;
+      box-shadow: 0 1px 12px rgba(0,0,0,0.08);
+      backdrop-filter: blur(12px);
+      border: 1px solid rgba(221,208,192,0.5);
+    }
+
+    .lang-btn {
+      padding: 5px 14px;
+      border: none;
+      background: transparent;
+      cursor: pointer;
+      font-family: var(--font-gothic);
+      font-size: 0.72rem;
+      color: var(--ink-muted);
+      border-radius: 1px;
+      transition: all 0.4s var(--ease-out);
+      font-weight: 400;
+      letter-spacing: 0.08em;
+    }
+
+    .lang-btn.active {
+      background: var(--ink);
+      color: var(--cream);
+    }
+
+    .lang-btn:hover:not(.active) {
+      color: var(--ink);
+    }
+
+    /* ===== Navigation ===== */
+    .nav {
+      position: fixed;
+      top: 0; left: 0; width: 100%;
+      z-index: 999;
+      padding: 20px 50px;
+      transition: all 0.5s var(--ease-out);
+      background: transparent;
+    }
+
+    .nav.scrolled {
+      background: rgba(247, 242, 235, 0.96);
+      box-shadow: 0 1px 0 rgba(0,0,0,0.06);
+      padding: 14px 50px;
+      backdrop-filter: blur(12px);
+    }
+
+    .nav-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .nav-logo {
+      font-family: var(--font-western);
+      font-size: 0.9rem;
+      font-weight: 400;
+      color: var(--ink);
+      text-decoration: none;
+      letter-spacing: 0.2em;
+      transition: opacity 0.3s;
+    }
+
+    .nav-logo:hover { opacity: 0.7; }
+
+    .nav-links {
+      display: flex;
+      gap: 36px;
+      list-style: none;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      color: var(--ink-muted);
+      font-size: 0.78rem;
+      letter-spacing: 0.08em;
+      transition: color 0.3s;
+      font-weight: 400;
+      position: relative;
+    }
+
+    .nav-links a::after {
+      content: '';
+      position: absolute;
+      bottom: -4px; left: 0;
+      width: 0; height: 1px;
+      background: var(--gold);
+      transition: width 0.4s var(--ease-out);
+    }
+
+    .nav-links a:hover { color: var(--ink); }
+    .nav-links a:hover::after { width: 100%; }
+
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 6px;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 5px;
+    }
+
+    .hamburger span {
+      display: block;
+      width: 22px;
+      height: 1px;
+      background: var(--ink);
+      transition: all 0.4s var(--ease-out);
+    }
+
+    /* ===== Hero ===== */
+    .hero {
+      position: relative;
+      height: 100vh;
+      min-height: 750px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      overflow: hidden;
+      background: #0a0a12;
+    }
+
+    .hero-bg-layer {
+      position: absolute;
+      top: 0; left: 0; width: 100%; height: 100%;
+      background: url('images/hero-bg.jpg') center center / cover no-repeat;
+      opacity: 0.55;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      padding: 0 20px;
+    }
+
+    .hero-logo-svg {
+      width: 520px;
+      max-width: 90vw;
+      margin: 0 auto;
+      opacity: 0;
+      animation: heroFadeUp 1.2s var(--ease-out) 0.3s forwards;
+    }
+
+    /* ===== Hero Intro Section ===== */
+    .hero-intro {
+      background: var(--cream);
+      padding: 80px 40px;
+      text-align: center;
+    }
+
+    .hero-intro-inner {
+      max-width: 680px;
+      margin: 0 auto;
+    }
+
+    .hero-intro-divider {
+      width: 1px;
+      height: 50px;
+      background: var(--gold);
+      margin: 0 auto 50px;
+    }
+
+    .hero-intro-philosophy {
+      font-family: var(--font-mincho);
+      font-size: 1.15rem;
+      font-weight: 300;
+      color: var(--ink);
+      letter-spacing: 0.2em;
+      line-height: 2.6;
+      margin-bottom: 40px;
+    }
+
+    .hero-intro-desc {
+      font-size: 0.82rem;
+      color: var(--ink-muted);
+      letter-spacing: 0.06em;
+      line-height: 2.2;
+      max-width: 480px;
+      margin: 0 auto;
+    }
+
+    .hero-philosophy {
+      font-family: var(--font-mincho);
+      font-size: 1.15rem;
+      font-weight: 300;
+      color: #fff;
+      letter-spacing: 0.2em;
+      line-height: 2.6;
+      margin-top: 44px;
+      text-shadow: 0 1px 8px rgba(0,0,0,0.4);
+      opacity: 0;
+      animation: heroFadeUp 1.2s var(--ease-out) 0.8s forwards;
+    }
+
+    .factory-equipment {
+      margin-top: 20px;
+    }
+
+    .factory-equipment img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    .factory-equipment-caption {
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      background: rgba(44,36,24,0.65);
+      color: var(--cream);
+      font-size: 0.7rem;
+      letter-spacing: 0.08em;
+      text-align: center;
+      padding: 4px 0;
+      font-family: var(--font-gothic);
+    }
+
+    @keyframes heroFadeUp {
+      from { opacity: 0; transform: translateY(15px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .hero-scroll {
+      position: absolute;
+      bottom: 40px; left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 10px;
+      text-decoration: none;
+      opacity: 0;
+      animation: heroFadeUp 1s var(--ease-out) 1.5s forwards;
+    }
+
+    .hero-scroll-text {
+      font-family: var(--font-western);
+      font-size: 0.65rem;
+      letter-spacing: 0.3em;
+      color: rgba(255,255,255,0.7);
+      writing-mode: vertical-rl;
+    }
+
+    .hero-scroll-line {
+      width: 1px; height: 35px;
+      background: var(--gold-light);
+      animation: scrollPulse 2.5s var(--ease-in-out) infinite;
+    }
+
+    @keyframes scrollPulse {
+      0%, 100% { transform: scaleY(0.4); opacity: 0.3; transform-origin: top; }
+      50% { transform: scaleY(1); opacity: 0.8; transform-origin: top; }
+    }
+
+    /* ===== 催事のご案内 ===== */
+    .saiji {
+      background: var(--cream-warm);
+    }
+
+    .saiji-empty {
+      max-width: 640px;
+      margin: 0 auto;
+      font-family: var(--font-mincho);
+      font-size: 0.95rem;
+      color: var(--ink-muted);
+      text-align: center;
+      letter-spacing: 0.08em;
+      padding: 40px 20px;
+    }
+
+    .saiji-card {
+      max-width: 640px;
+      margin: 0 auto;
+      background: var(--white);
+      border: 1px solid var(--border);
+      padding: 50px 48px;
+      text-align: center;
+      position: relative;
+    }
+
+    .saiji-card + .saiji-card {
+      margin-top: 28px;
+    }
+
+    .saiji-badge {
+      display: inline-block;
+      background: var(--gold);
+      color: var(--white);
+      font-family: var(--font-gothic);
+      font-size: 0.7rem;
+      font-weight: 500;
+      letter-spacing: 0.15em;
+      padding: 4px 18px;
+      margin-bottom: 24px;
+    }
+
+    .saiji-badge.upcoming {
+      background: #5a7a5a;
+    }
+
+    .saiji-badge.ended {
+      background: #999;
+    }
+
+    .saiji-store {
+      font-family: var(--font-mincho);
+      font-size: 1.2rem;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      color: var(--ink);
+      margin-bottom: 12px;
+    }
+
+    .saiji-date {
+      font-family: var(--font-gothic);
+      font-size: 0.95rem;
+      color: var(--ink-light);
+      letter-spacing: 0.05em;
+      margin-bottom: 30px;
+    }
+
+    .saiji-divider {
+      width: 40px;
+      height: 1px;
+      background: var(--gold);
+      margin: 0 auto 30px;
+    }
+
+    .saiji-products-label {
+      font-family: var(--font-gothic);
+      font-size: 0.72rem;
+      color: var(--ink-muted);
+      letter-spacing: 0.2em;
+      margin-bottom: 16px;
+    }
+
+    .saiji-products {
+      list-style: none;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 8px 20px;
+      margin-bottom: 30px;
+    }
+
+    .saiji-products li {
+      font-family: var(--font-mincho);
+      font-size: 0.92rem;
+      color: var(--ink);
+      letter-spacing: 0.08em;
+    }
+
+    .saiji-products li::before {
+      content: '·';
+      margin-right: 6px;
+      color: var(--gold);
+    }
+
+    .saiji-message {
+      font-family: var(--font-mincho);
+      font-size: 0.88rem;
+      color: var(--ink-muted);
+      letter-spacing: 0.08em;
+      line-height: 1.8;
+    }
+
+    /* --- 過去の催事アコーディオン --- */
+    .saiji-past {
+      max-width: 640px;
+      margin: 48px auto 0;
+    }
+
+    .saiji-past-toggle {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      width: 100%;
+      background: none;
+      border: 1px solid var(--border);
+      padding: 16px 24px;
+      cursor: pointer;
+      font-family: var(--font-gothic);
+      font-size: 0.82rem;
+      color: var(--ink-muted);
+      letter-spacing: 0.15em;
+      transition: background 0.3s;
+    }
+
+    .saiji-past-toggle:hover {
+      background: rgba(0,0,0,0.02);
+    }
+
+    .saiji-past-toggle .arrow {
+      display: inline-block;
+      transition: transform 0.3s;
+      font-size: 0.7rem;
+    }
+
+    .saiji-past-toggle.open .arrow {
+      transform: rotate(180deg);
+    }
+
+    .saiji-past-list {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.5s ease;
+    }
+
+    .saiji-past-list.open {
+      max-height: 2000px;
+    }
+
+    .saiji-past-list .saiji-card {
+      margin-top: 20px;
+      opacity: 0.85;
+    }
+
+    .saiji-past-list .saiji-card .saiji-badge {
+      background: #999;
+    }
+
+    /* ===== Section Commons ===== */
+    .section {
+      position: relative;
+      padding: 120px 50px;
+      z-index: 1;
+    }
+
+    .section-inner {
+      max-width: 1080px;
+      margin: 0 auto;
+    }
+
+    .section-header {
+      text-align: center;
+      margin-bottom: 70px;
+    }
+
+    .section-label {
+      font-family: var(--font-western);
+      font-size: 0.75rem;
+      letter-spacing: 0.35em;
+      color: var(--gold);
+      text-transform: uppercase;
+      margin-bottom: 14px;
+    }
+
+    .section-title-ja {
+      font-family: var(--font-mincho);
+      font-size: 1.6rem;
+      font-weight: 400;
+      letter-spacing: 0.2em;
+      margin-bottom: 20px;
+      line-height: 1.6;
+    }
+
+    .section-line {
+      width: 1px; height: 30px;
+      background: var(--gold);
+      margin: 0 auto 24px;
+    }
+
+    .section-desc {
+      font-size: 0.85rem;
+      color: var(--ink-muted);
+      max-width: 560px;
+      margin: 0 auto;
+      line-height: 2.2;
+      letter-spacing: 0.04em;
+    }
+
+    /* ===== Philosophy Band ===== */
+    .philosophy {
+      position: relative;
+      padding: 90px 50px;
+      background: var(--cream-warm);
+      text-align: center;
+      overflow: hidden;
+      z-index: 1;
+    }
+
+    .philosophy::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background:
+        radial-gradient(ellipse at 30% 50%, rgba(232,196,196,0.1) 0%, transparent 60%),
+        radial-gradient(ellipse at 70% 50%, rgba(184,150,90,0.06) 0%, transparent 50%);
+    }
+
+    .philosophy-vertical {
+      position: relative;
+      display: inline-block;
+      writing-mode: vertical-rl;
+      font-family: var(--font-mincho);
+      font-size: 1.5rem;
+      font-weight: 400;
+      letter-spacing: 0.35em;
+      line-height: 3;
+      color: var(--ink);
+      padding: 20px 0;
+    }
+
+    .philosophy-en {
+      position: relative;
+      display: block;
+      margin-top: 30px;
+      font-family: var(--font-western);
+      font-size: 0.85rem;
+      font-style: italic;
+      color: var(--ink-muted);
+      letter-spacing: 0.05em;
+      writing-mode: horizontal-tb;
+      line-height: 1.8;
+    }
+
+    /* ===== Concept ===== */
+    .concept { background: var(--washi); }
+
+    .concept-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 70px;
+      align-items: center;
+    }
+
+    .concept-image {
+      background: linear-gradient(135deg, var(--cream-warm) 0%, var(--cream-deep) 100%);
+      position: relative;
+    }
+
+    .concept-image > img {
+      width: 100%;
+      aspect-ratio: 4/3;
+      object-fit: cover;
+      display: block;
+      position: relative;
+    }
+
+    .concept-text h3 {
+      font-family: var(--font-mincho);
+      font-size: 1.3rem;
+      font-weight: 400;
+      letter-spacing: 0.12em;
+      margin-bottom: 24px;
+      line-height: 2;
+    }
+
+    .concept-text p {
+      font-size: 0.88rem;
+      color: var(--ink-light);
+      line-height: 2.3;
+      margin-bottom: 16px;
+      letter-spacing: 0.03em;
+    }
+
+    /* ===== Products ===== */
+    .products { background: var(--cream); }
+
+    .products-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 28px;
+    }
+
+    .product-card {
+      background: var(--white);
+      overflow: hidden;
+      transition: all 0.5s var(--ease-out);
+      border: 1px solid rgba(0,0,0,0.03);
+      position: relative;
+    }
+
+    .product-card::after {
+      content: '';
+      position: absolute;
+      bottom: 0; left: 50%;
+      width: 0; height: 2px;
+      background: var(--gold);
+      transition: all 0.5s var(--ease-out);
+      transform: translateX(-50%);
+    }
+
+    .product-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 16px 48px rgba(44,36,24,0.08);
+    }
+
+    .product-card:hover::after {
+      width: 100%;
+    }
+
+    .product-img {
+      aspect-ratio: 4/3;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .product-img img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.6s var(--ease-out);
+    }
+
+    .product-card:hover .product-img img {
+      transform: scale(1.03);
+    }
+
+    .product-img { background: var(--cream-warm); }
+
+    .product-body {
+      padding: 24px 22px 26px;
+    }
+
+    .product-name-ja {
+      font-family: var(--font-mincho);
+      font-size: 1.05rem;
+      font-weight: 500;
+      margin-bottom: 3px;
+      letter-spacing: 0.06em;
+    }
+
+    .product-name-sub {
+      font-family: var(--font-western);
+      font-size: 0.75rem;
+      color: var(--gold);
+      margin-bottom: 12px;
+      font-style: italic;
+      letter-spacing: 0.03em;
+    }
+
+    .product-desc {
+      font-size: 0.8rem;
+      color: var(--ink-light);
+      line-height: 1.9;
+      margin-bottom: 14px;
+      letter-spacing: 0.02em;
+    }
+
+    .product-meta {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    .product-tag {
+      font-size: 0.68rem;
+      padding: 3px 10px;
+      border: 1px solid var(--border);
+      color: var(--ink-muted);
+      letter-spacing: 0.03em;
+    }
+
+    .product-tag.frozen {
+      border-color: #C4D8E8;
+      color: #4A7A9B;
+      background: rgba(196,216,232,0.12);
+    }
+
+    .product-tag.room-temp {
+      border-color: var(--border);
+      color: var(--hojicha);
+      background: rgba(232,221,206,0.15);
+    }
+
+    /* ===== Creators ===== */
+    .creators { background: var(--washi); }
+
+    .creators-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+    }
+
+    .creator-card { text-align: center; }
+
+    .creator-portrait {
+      width: 180px; height: 180px;
+      border-radius: 50%;
+      margin: 0 auto 28px;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .creator-portrait img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .creator-portrait::after {
+      content: '';
+      position: absolute;
+      inset: -6px;
+      border-radius: 50%;
+      border: 1px solid rgba(184,150,90,0.2);
+    }
+
+    .creator-portrait.chef { background: linear-gradient(150deg, #EDE4D8, #DDD0C0); }
+    .creator-portrait.tea-master { background: linear-gradient(150deg, #D8E8D0, #C8D8C0); }
+
+    .creator-role {
+      font-family: var(--font-mincho);
+      font-size: 0.78rem;
+      color: var(--gold);
+      letter-spacing: 0.2em;
+      margin-bottom: 8px;
+    }
+
+    .creator-name-ja {
+      font-family: var(--font-mincho);
+      font-size: 1.4rem;
+      font-weight: 500;
+      margin-bottom: 4px;
+      letter-spacing: 0.15em;
+    }
+
+    .creator-name-en {
+      font-family: var(--font-western);
+      font-size: 0.82rem;
+      color: var(--ink-muted);
+      font-style: italic;
+      margin-bottom: 20px;
+    }
+
+    .creator-desc {
+      font-size: 0.84rem;
+      color: var(--ink-light);
+      line-height: 2.2;
+      max-width: 380px;
+      margin: 0 auto;
+      letter-spacing: 0.03em;
+    }
+
+    /* ===== OEM ===== */
+    .oem {
+      background: var(--cream);
+      position: relative;
+    }
+
+    .oem-intro {
+      text-align: center;
+      max-width: 680px;
+      margin: 0 auto 60px;
+    }
+
+    .oem-intro p {
+      font-size: 0.88rem;
+      color: var(--ink-light);
+      line-height: 2.3;
+      letter-spacing: 0.03em;
+    }
+
+    .oem-features {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+      margin-bottom: 50px;
+    }
+
+    .oem-feature {
+      padding: 40px 28px 36px;
+      text-align: center;
+      border: 1px solid rgba(0,0,0,0.03);
+      transition: all 0.5s var(--ease-out);
+      position: relative;
+      background-size: cover;
+      background-position: center;
+      overflow: hidden;
+    }
+
+    .oem-feature::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: rgba(44,36,24,0.7);
+      transition: all 0.5s var(--ease-out);
+    }
+
+    .oem-feature:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 36px rgba(44,36,24,0.15);
+    }
+
+    .oem-feature:hover::before { background: rgba(44,36,24,0.6); }
+
+    .oem-feature > * {
+      position: relative;
+      z-index: 1;
+    }
+
+    .oem-icon {
+      width: 56px; height: 56px;
+      margin: 0 auto 20px;
+      border-radius: 50%;
+      background: var(--cream);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.4rem;
+      border: 1px solid var(--border);
+    }
+
+    .oem-feature h4 {
+      font-family: var(--font-mincho);
+      font-size: 0.95rem;
+      font-weight: 500;
+      margin-bottom: 12px;
+      letter-spacing: 0.08em;
+      color: var(--cream);
+    }
+
+    .oem-feature p {
+      font-size: 0.8rem;
+      color: rgba(255,255,255,0.85);
+      line-height: 2;
+      letter-spacing: 0.02em;
+    }
+
+    .oem-categories {
+      background: var(--white);
+      padding: 44px;
+      border: 1px solid rgba(0,0,0,0.03);
+      margin-bottom: 36px;
+    }
+
+    .oem-categories h3 {
+      font-family: var(--font-mincho);
+      font-size: 1.05rem;
+      text-align: center;
+      margin-bottom: 28px;
+      letter-spacing: 0.12em;
+    }
+
+    .oem-cat-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 14px;
+    }
+
+    .oem-cat-item {
+      text-align: center;
+      padding: 48px 10px;
+      background-size: cover;
+      background-position: center;
+      position: relative;
+      transition: all 0.3s var(--ease-out);
+    }
+
+    .oem-cat-item::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: rgba(0,0,0,0.45);
+      transition: background 0.3s;
+    }
+
+    .oem-cat-item:hover::before {
+      background: rgba(0,0,0,0.55);
+    }
+
+    .oem-cat-item .cat-icon {
+      font-size: 1.4rem;
+      margin-bottom: 8px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .oem-cat-item .cat-name {
+      font-size: 0.82rem;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      color: var(--white);
+      position: relative;
+      z-index: 1;
+      text-shadow: 0 1px 4px rgba(0,0,0,0.4);
+    }
+
+    .oem-flow {
+      background: var(--white);
+      padding: 44px;
+      border: 1px solid rgba(0,0,0,0.03);
+    }
+
+    .oem-flow h3 {
+      font-family: var(--font-mincho);
+      font-size: 1.05rem;
+      text-align: center;
+      margin-bottom: 36px;
+      letter-spacing: 0.12em;
+    }
+
+    .oem-steps {
+      display: flex;
+      justify-content: space-between;
+      gap: 8px;
+    }
+
+    .oem-step {
+      flex: 1;
+      text-align: center;
+      position: relative;
+    }
+
+    .oem-step-num {
+      width: 34px; height: 34px;
+      border-radius: 50%;
+      background: var(--ink);
+      color: var(--cream);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--font-western);
+      font-size: 0.85rem;
+      margin: 0 auto 14px;
+    }
+
+    .oem-step h5 {
+      font-family: var(--font-mincho);
+      font-size: 0.88rem;
+      font-weight: 500;
+      margin-bottom: 8px;
+      letter-spacing: 0.05em;
+    }
+
+    .oem-step p {
+      font-size: 0.75rem;
+      color: var(--ink-muted);
+      line-height: 1.8;
+    }
+
+    .oem-step-connector {
+      position: absolute;
+      top: 17px;
+      right: -4px;
+      width: calc(100% - 48px);
+      height: 1px;
+      background: var(--border);
+    }
+
+    .oem-step:last-child .oem-step-connector { display: none; }
+
+    /* ===== Stores ===== */
+    .stores { background: var(--cream-warm); }
+
+    .stores-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 22px;
+    }
+
+    .store-card {
+      background: var(--white);
+      padding: 30px;
+      border: 1px solid rgba(0,0,0,0.03);
+      transition: all 0.4s var(--ease-out);
+    }
+
+    .store-card:hover {
+      box-shadow: 0 6px 24px rgba(44,36,24,0.06);
+    }
+
+    .store-card.main-store {
+      grid-column: 1 / -1;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 36px;
+      align-items: center;
+    }
+
+    .store-badge {
+      display: inline-block;
+      font-family: var(--font-mincho);
+      font-size: 0.68rem;
+      padding: 3px 14px;
+      background: var(--ink);
+      color: var(--cream);
+      letter-spacing: 0.15em;
+      margin-bottom: 12px;
+    }
+
+    .store-badge.factory {
+      background: var(--matcha);
+    }
+
+    .store-name-ja {
+      font-family: var(--font-mincho);
+      font-size: 1.1rem;
+      font-weight: 500;
+      margin-bottom: 3px;
+      letter-spacing: 0.08em;
+    }
+
+    .store-name-en {
+      font-family: var(--font-western);
+      font-size: 0.78rem;
+      color: var(--ink-muted);
+      font-style: italic;
+      margin-bottom: 14px;
+    }
+
+    .store-info {
+      font-size: 0.82rem;
+      color: var(--ink-light);
+      line-height: 2;
+      letter-spacing: 0.02em;
+    }
+
+    .store-info a {
+      color: var(--ink-light);
+      text-decoration: none;
+      border-bottom: 1px solid var(--border);
+      transition: border-color 0.3s;
+    }
+
+    .store-info a:hover {
+      border-color: var(--gold);
+    }
+
+    .store-image-placeholder {
+      aspect-ratio: 16/9;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .store-image-placeholder img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .store-note {
+      margin-top: 10px;
+      font-size: 0.78rem;
+      color: var(--ink-muted);
+    }
+
+    /* ===== Order ===== */
+    .order { background: var(--washi); }
+
+    .order-content {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 70px;
+      align-items: start;
+    }
+
+    .order-text h3 {
+      font-family: var(--font-mincho);
+      font-size: 1.15rem;
+      font-weight: 500;
+      margin-bottom: 18px;
+      letter-spacing: 0.1em;
+    }
+
+    .order-text p {
+      font-size: 0.84rem;
+      color: var(--ink-light);
+      line-height: 2.2;
+      margin-bottom: 28px;
+      letter-spacing: 0.03em;
+    }
+
+    .order-btn {
+      display: inline-block;
+      padding: 14px 44px;
+      background: var(--ink);
+      color: var(--cream);
+      text-decoration: none;
+      font-size: 0.82rem;
+      letter-spacing: 0.15em;
+      transition: all 0.4s var(--ease-out);
+      font-family: var(--font-gothic);
+      border: 1px solid var(--ink);
+    }
+
+    .order-btn:hover {
+      background: transparent;
+      color: var(--ink);
+    }
+
+    .order-info-list {
+      list-style: none;
+    }
+
+    .order-info-list li {
+      padding: 18px 0;
+      border-bottom: 1px solid var(--border);
+      display: grid;
+      grid-template-columns: 110px 1fr;
+      gap: 16px;
+      font-size: 0.84rem;
+    }
+
+    .order-info-list li:first-child {
+      border-top: 1px solid var(--border);
+    }
+
+    .order-label {
+      font-weight: 500;
+      color: var(--ink);
+      letter-spacing: 0.05em;
+    }
+
+    .order-value {
+      color: var(--ink-light);
+      line-height: 1.8;
+    }
+
+    /* ===== Contact ===== */
+    .contact {
+      background: var(--cream-warm);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .contact::before {
+      content: '';
+      position: absolute;
+      bottom: -60px; left: -60px;
+      width: 300px; height: 300px;
+      opacity: 0.025;
+      background-image: radial-gradient(circle at 50% 0%, transparent 40%, var(--ink) 40.5%, var(--ink) 41%, transparent 41.5%);
+      background-size: 20px 20px;
+    }
+
+    .contact-content {
+      text-align: center;
+      max-width: 550px;
+      margin: 0 auto;
+      position: relative;
+    }
+
+    .contact-lead {
+      font-size: 0.88rem;
+      color: var(--ink-light);
+      line-height: 2.2;
+      margin-bottom: 40px;
+      letter-spacing: 0.04em;
+    }
+
+    .contact-form {
+      max-width: 560px;
+      margin: 0 auto 50px;
+      text-align: left;
+    }
+
+    .form-group {
+      margin-bottom: 22px;
+    }
+
+    .form-label {
+      display: block;
+      font-family: var(--font-mincho);
+      font-size: 0.84rem;
+      font-weight: 500;
+      color: var(--ink);
+      letter-spacing: 0.08em;
+      margin-bottom: 8px;
+    }
+
+    .form-label .required {
+      font-size: 0.68rem;
+      color: #c45;
+      margin-left: 6px;
+      font-family: var(--font-gothic);
+      font-weight: 400;
+    }
+
+    .form-input,
+    .form-textarea {
+      width: 100%;
+      padding: 12px 16px;
+      font-family: var(--font-gothic);
+      font-size: 0.88rem;
+      color: var(--ink);
+      background: var(--white);
+      border: 1px solid var(--border);
+      outline: none;
+      transition: border-color 0.3s;
+      letter-spacing: 0.03em;
+      line-height: 1.6;
+    }
+
+    .form-input:focus,
+    .form-textarea:focus {
+      border-color: var(--gold);
+    }
+
+    .form-textarea {
+      min-height: 160px;
+      resize: vertical;
+    }
+
+    .form-submit {
+      display: block;
+      width: 100%;
+      padding: 16px;
+      background: var(--ink);
+      color: var(--cream);
+      border: 1px solid var(--ink);
+      font-family: var(--font-gothic);
+      font-size: 0.88rem;
+      letter-spacing: 0.15em;
+      cursor: pointer;
+      transition: all 0.4s var(--ease-out);
+      margin-top: 32px;
+    }
+
+    .form-submit:hover {
+      background: transparent;
+      color: var(--ink);
+    }
+
+    .contact-thankyou {
+      display: none;
+      text-align: center;
+      padding: 60px 20px;
+    }
+
+    .contact-thankyou.active {
+      display: block;
+    }
+
+    .contact-thankyou-icon {
+      width: 64px;
+      height: 64px;
+      border-radius: 50%;
+      background: var(--matcha-bg);
+      border: 1px solid var(--matcha-light);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 28px;
+      font-size: 1.6rem;
+    }
+
+    .contact-thankyou h3 {
+      font-family: var(--font-mincho);
+      font-size: 1.2rem;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      margin-bottom: 20px;
+      color: var(--ink);
+    }
+
+    .contact-thankyou p {
+      font-size: 0.88rem;
+      color: var(--ink-light);
+      line-height: 2.2;
+      letter-spacing: 0.04em;
+    }
+
+    .form-submit:disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+    }
+
+    .contact-info-bottom {
+      padding-top: 40px;
+      border-top: 1px solid var(--border);
+    }
+
+    .contact-tel {
+      font-family: var(--font-western);
+      font-size: 2.2rem;
+      font-weight: 400;
+      color: var(--ink);
+      margin-bottom: 6px;
+      letter-spacing: 0.05em;
+    }
+
+    .contact-tel a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .contact-address {
+      font-size: 0.84rem;
+      color: var(--ink-light);
+      line-height: 2;
+      margin-bottom: 30px;
+      letter-spacing: 0.03em;
+    }
+
+    .contact-company {
+      display: inline-block;
+      font-size: 0.82rem;
+      color: var(--ink-muted);
+      padding: 18px 36px;
+      background: var(--white);
+      border: 1px solid rgba(0,0,0,0.03);
+      letter-spacing: 0.05em;
+    }
+
+    /* ===== Footer ===== */
+    .footer {
+      background: var(--ink);
+      color: rgba(247,242,235,0.5);
+      padding: 55px 50px 35px;
+    }
+
+    .footer-inner {
+      max-width: 1080px;
+      margin: 0 auto;
+    }
+
+    .footer-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-bottom: 40px;
+      padding-bottom: 40px;
+      border-bottom: 1px solid rgba(247,242,235,0.08);
+    }
+
+    .footer-brand {
+      font-family: var(--font-western);
+      font-size: 0.95rem;
+      color: rgba(247,242,235,0.8);
+      letter-spacing: 0.2em;
+      margin-bottom: 8px;
+    }
+
+    .footer-company {
+      font-size: 0.75rem;
+      letter-spacing: 0.08em;
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 28px;
+      list-style: none;
+    }
+
+    .footer-links a {
+      color: rgba(247,242,235,0.45);
+      text-decoration: none;
+      font-size: 0.78rem;
+      letter-spacing: 0.05em;
+      transition: color 0.3s;
+    }
+
+    .footer-links a:hover {
+      color: rgba(247,242,235,0.85);
+    }
+
+    .footer-tea-note {
+      text-align: center;
+      font-size: 0.75rem;
+      color: rgba(247,242,235,0.35);
+      margin-bottom: 24px;
+      line-height: 1.9;
+      letter-spacing: 0.04em;
+    }
+
+    .footer-bottom {
+      text-align: center;
+      font-family: var(--font-western);
+      font-size: 0.7rem;
+      letter-spacing: 0.12em;
+      color: rgba(247,242,235,0.3);
+    }
+
+    /* ===== Mobile Menu ===== */
+    .mobile-menu {
+      display: none;
+      position: fixed;
+      top: 0; left: 0; width: 100%; height: 100%;
+      background: rgba(247, 242, 235, 0.98);
+      z-index: 998;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 28px;
+      backdrop-filter: blur(10px);
+    }
+
+    .mobile-menu.active { display: flex; }
+
+    .mobile-menu a {
+      font-family: var(--font-mincho);
+      font-size: 1.05rem;
+      text-decoration: none;
+      color: var(--ink);
+      letter-spacing: 0.2em;
+      transition: color 0.3s;
+    }
+
+    .mobile-menu a:hover { color: var(--gold); }
+
+    /* ===== Scroll Animations ===== */
+    .reveal {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.8s var(--ease-out), transform 0.8s var(--ease-out);
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .reveal-delay-1 { transition-delay: 0.1s; }
+    .reveal-delay-2 { transition-delay: 0.2s; }
+    .reveal-delay-3 { transition-delay: 0.3s; }
+
+    /* ===== Responsive ===== */
+    @media (max-width: 1024px) {
+      .products-grid { grid-template-columns: repeat(2, 1fr); }
+      .oem-cat-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+
+    @media (max-width: 768px) {
+      .section { padding: 80px 24px; }
+      .nav { padding: 14px 24px; }
+      .nav.scrolled { padding: 10px 24px; }
+      .nav-links { display: none; }
+      .hamburger { display: flex; }
+      .lang-switcher { top: 16px; right: 56px; }
+
+      .hero { min-height: 650px; }
+      .hero-logo-svg { width: 400px; }
+      .hero-philosophy { font-size: 0.95rem; margin-top: 30px; }
+      .hero-intro { padding: 60px 24px; }
+
+      .philosophy-vertical { font-size: 1.2rem; line-height: 2.8; }
+      .section-title-ja { font-size: 1.3rem; }
+
+      .concept-grid { grid-template-columns: 1fr; gap: 30px; }
+      .products-grid { grid-template-columns: 1fr; gap: 20px; }
+      .creators-grid { grid-template-columns: 1fr; gap: 50px; }
+      .oem-features { grid-template-columns: 1fr; }
+      .oem-steps { flex-direction: column; gap: 24px; }
+      .oem-step-connector { display: none; }
+      .stores-grid { grid-template-columns: 1fr; }
+      .store-card.main-store { grid-template-columns: 1fr; }
+      .order-content { grid-template-columns: 1fr; gap: 40px; }
+
+      .footer-top { flex-direction: column; gap: 24px; }
+      .footer-links { flex-wrap: wrap; gap: 16px; }
+    }
+
+    @media (max-width: 480px) {
+      .section { padding: 60px 18px; }
+      .hero-logo-svg { width: 300px; }
+      .hero-philosophy { font-size: 0.85rem; line-height: 2.2; }
+      .oem-cat-grid { grid-template-columns: 1fr 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <!-- Language Switcher -->
+  <div class="lang-switcher">
+    <button class="lang-btn active" data-lang="ja">日本語</button>
+    <button class="lang-btn" data-lang="en">EN</button>
+    <button class="lang-btn" data-lang="zh">中文</button>
+  </div>
+
+  <!-- Navigation -->
+  <nav class="nav" id="nav">
+    <div class="nav-inner">
+      <a href="#hero" class="nav-logo">TSUBURANO SWEETS FACTORY</a>
+      <ul class="nav-links">
+        <li><a href="#concept" data-ja="コンセプト" data-en="Concept" data-zh="理念">コンセプト</a></li>
+        <li><a href="#products" data-ja="商品紹介" data-en="Products" data-zh="产品介绍">商品紹介</a></li>
+        <li><a href="#creators" data-ja="匠" data-en="Artisans" data-zh="匠人">匠</a></li>
+        <li><a href="#oem" data-ja="OEM製造" data-en="OEM" data-zh="OEM代工">OEM製造</a></li>
+        <li><a href="#saiji" data-ja="催事のご案内" data-en="Events" data-zh="活动信息">催事のご案内</a></li>
+        <li><a href="#stores" data-ja="店舗情報" data-en="Stores" data-zh="店铺信息">店舗情報</a></li>
+        <li><a href="#contact" data-ja="お問い合わせ" data-en="Contact" data-zh="联系我们">お問い合わせ</a></li>
+      </ul>
+      <button class="hamburger" id="hamburger" aria-label="メニュー">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- Mobile Menu -->
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="#concept" data-ja="コンセプト" data-en="Concept" data-zh="理念">コンセプト</a>
+    <a href="#products" data-ja="商品紹介" data-en="Products" data-zh="产品介绍">商品紹介</a>
+    <a href="#creators" data-ja="匠" data-en="Artisans" data-zh="匠人">匠</a>
+    <a href="#oem" data-ja="OEM製造" data-en="OEM" data-zh="OEM代工">OEM製造</a>
+    <a href="#saiji" data-ja="催事のご案内" data-en="Events" data-zh="活动信息">催事のご案内</a>
+    <a href="#stores" data-ja="店舗情報" data-en="Stores" data-zh="店铺信息">店舗情報</a>
+    <a href="#contact" data-ja="お問い合わせ" data-en="Contact" data-zh="联系我们">お問い合わせ</a>
+  </div>
+
+  <!-- ==================== HERO (夜桜背景 + ロゴのみ) ==================== -->
+  <section class="hero" id="hero">
+    <div class="hero-bg-layer"></div>
+    <div class="hero-content">
+      <div class="hero-logo-svg">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 280" width="100%">
+          <defs>
+            <style>
+              .logo-script { font-family: 'Snell Roundhand', 'Zapfino', 'Edwardian Script ITC', cursive; }
+              .logo-sub { font-family: 'Didot', 'Bodoni MT', serif; letter-spacing: 5px; }
+            </style>
+          </defs>
+          <line x1="120" y1="40" x2="270" y2="40" stroke="#d4b87c" stroke-width="0.5"/>
+          <rect x="295" y="36" width="8" height="8" fill="#d4b87c" transform="rotate(45 299 40)"/>
+          <line x1="328" y1="40" x2="480" y2="40" stroke="#d4b87c" stroke-width="0.5"/>
+          <text x="300" y="138" text-anchor="middle" class="logo-script" font-size="90" fill="#fff">TSF</text>
+          <path d="M140 153 C185 163 240 158 300 153 C360 148 410 153 460 148" fill="none" stroke="#d4b87c" stroke-width="1.5" stroke-linecap="round"/>
+          <path d="M430 146 C442 142 452 148 462 148 C467 148 470 144 467 140" fill="none" stroke="#d4b87c" stroke-width="1" stroke-linecap="round"/>
+          <text x="300" y="198" text-anchor="middle" class="logo-sub" font-size="16.5" fill="#fff">TSUBURANO SWEETS FACTORY</text>
+          <line x1="160" y1="222" x2="440" y2="222" stroke="rgba(255,255,255,0.3)" stroke-width="0.3"/>
+          <text x="300" y="248" text-anchor="middle" class="logo-sub" font-size="8" fill="rgba(255,255,255,0.6)">KYOTO</text>
+        </svg>
+      </div>
+      <p class="hero-philosophy" data-ja="変わらないものの上に<br>新しいものを積み重ねて<br>新たな伝統、新たな美味しさ、<br>新たなくつろぎを創っていく。" data-en="Building upon the unchanging,<br>we create new traditions,<br>new flavors,<br>and new moments of comfort." data-zh="在不变之上<br>积累新的创造<br>新的传统、新的美味、<br>新的舒适时光。">変わらないものの上に<br>新しいものを積み重ねて<br>新たな伝統、新たな美味しさ、<br>新たなくつろぎを創っていく。</p>
+    </div>
+    <a href="#hero-intro" class="hero-scroll">
+      <span class="hero-scroll-text">SCROLL</span>
+      <span class="hero-scroll-line"></span>
+    </a>
+  </section>
+
+  <!-- ==================== HERO INTRO (フィロソフィ文章) ==================== -->
+  <section class="hero-intro" id="hero-intro">
+    <div class="hero-intro-inner">
+      <div class="hero-intro-divider"></div>
+      <p class="hero-intro-desc" data-ja="京都の伝統と革新が生み出す、和スイーツを自社工場よりお届けします。<br>京都・宇治茶などの和の素材を洋菓子の技法で昇華させた<br>唯一無二の味をお愉しみください。" data-en="We deliver Japanese sweets born from Kyoto's tradition and innovation, straight from our own factory.<br>Savor the essence of Kyoto — Uji tea and other traditional ingredients<br>elevated through Western confectionery techniques into a one-of-a-kind taste." data-zh="京都传统与创新孕育的和式甜点，从自有工厂直接为您呈上。<br>将京都宇治茶等和风素材以西式糕点技法升华而成的<br>独一无二的美味，请尽情享受。">京都の伝統と革新が生み出す、和スイーツを自社工場よりお届けします。<br>京都・宇治茶などの和の素材を洋菓子の技法で昇華させた<br>唯一無二の味をお愉しみください。</p>
+    </div>
+  </section>
+
+  <!-- ==================== CONCEPT ==================== -->
+  <section class="section concept" id="concept">
+    <div class="section-inner">
+      <div class="section-header reveal">
+        <p class="section-label">Concept</p>
+        <h2 class="section-title-ja" data-ja="つぶら乃スイーツファクトリーについて" data-en="About Tsuburano Sweets Factory" data-zh="关于つぶら乃甜点工厂">つぶら乃スイーツファクトリーについて</h2>
+        <div class="section-line"></div>
+      </div>
+      <div class="concept-grid">
+        <div class="concept-image reveal">
+          <img src="images/factory-exterior-new.jpg" alt="TSUBURANO SWEETS FACTORY 外観">
+          <div class="factory-equipment">
+            <img src="images/factory-interior.jpg" alt="工場内観">
+          </div>
+        </div>
+        <div class="concept-text reveal reveal-delay-1">
+          <h3 data-ja="京都の伝統を、この場所から。" data-en="From this place, Kyoto's traditions." data-zh="从这里，传递京都的传统。">京都の伝統を、この場所から。</h3>
+          <p data-ja="大阪府泉南市りんくう南浜に位置するTSUBURANO SWEETS FACTORYは、株式会社緑歩園が運営する自社工場です。" data-en="Located in Rinku Minamihama, Sennan City, Osaka, TSUBURANO SWEETS FACTORY is our own factory operated by Ryokuhoen Co., Ltd." data-zh="位于大阪府泉南市临空南滨的TSUBURANO SWEETS FACTORY是由株式会社绿步园运营的自有工厂。">大阪府泉南市りんくう南浜に位置するTSUBURANO SWEETS FACTORYは、株式会社緑歩園が運営する自社工場です。</p>
+          <p data-ja="京都本店をはじめとする各店舗のスイーツを一貫して製造。茶師十段・東源兵衛が厳選した宇治茶を100%使用し、シェフパティシエ・中村一志の創造性と伝統的な技法を融合させた、唯一無二のスイーツをお届けしています。" data-en="We consistently manufacture sweets for all our stores including the Kyoto Main Store. Using 100% Uji tea carefully selected by Genbee Azuma, a 10th-level certified tea master, we deliver unique sweets that blend Chef Kazushi Nakamura's creativity with traditional techniques." data-zh="我们一贯地为包括京都总店在内的各店铺制造甜点。使用由十段茶师东源兵卫精心挑选的100%宇治茶，将行政糕点主厨中村一志的创意与传统技艺相融合，为您呈上独一无二的甜点。">京都本店をはじめとする各店舗のスイーツを一貫して製造。茶師十段・東源兵衛が厳選した宇治茶を100%使用し、シェフパティシエ・中村一志の創造性と伝統的な技法を融合させた、唯一無二のスイーツをお届けしています。</p>
+          <p data-ja="また、当工場では自社ブランド製品の製造に加え、他社様からのOEM製造も承っております。長年培ってきた製菓技術と品質管理体制で、お客様のご要望にお応えいたします。" data-en="In addition to manufacturing our own brand products, we also accept OEM manufacturing orders. With years of confectionery expertise and quality control, we meet our clients' needs with excellence." data-zh="除了制造自有品牌产品外，我们还承接其他公司的OEM代工订单。凭借多年积累的制果技术和品质管理体系，满足客户的各种需求。">また、当工場では自社ブランド製品の製造に加え、他社様からのOEM製造も承っております。長年培ってきた製菓技術と品質管理体制で、お客様のご要望にお応えいたします。</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== PRODUCTS ==================== -->
+  <section class="section products" id="products">
+    <div class="section-inner">
+      <div class="section-header reveal">
+        <p class="section-label">Products</p>
+        <h2 class="section-title-ja" data-ja="自社ブランド「つぶら乃」商品紹介" data-en="Tsuburano Brand Products" data-zh="自有品牌「つぶら乃」产品介绍">自社ブランド「つぶら乃」商品紹介</h2>
+        <div class="section-line"></div>
+        <p class="section-desc" data-ja="茶師十段が選び抜いた宇治茶を100%使用した、<br>こだわりのスイーツコレクション。" data-en="A curated collection of sweets made with 100% Uji tea,<br>selected by our 10th-level certified tea master." data-zh="使用十段茶师精选的100%宇治茶制作的<br>精致甜点系列。">茶師十段が選び抜いた宇治茶を100%使用した、<br>こだわりのスイーツコレクション。</p>
+      </div>
+
+      <div class="products-grid">
+        <!-- クッキーフルール -->
+        <div class="product-card reveal">
+          <div class="product-img"><img src="images/cookie-fleur.jpg" alt="クッキーフルール"></div>
+          <div class="product-body">
+            <h3 class="product-name-ja" data-ja="クッキーフルール" data-en="Cookie Fleur" data-zh="花之曲奇">クッキーフルール</h3>
+            <p class="product-name-sub">Cookie Fleur / 花之曲奇</p>
+            <p class="product-desc" data-ja="ほろほろとした食感で桜の花びらの形をした桜風味のブールドネージュ、桜風味のチョコをサンドした桜クッキー、苺のメレンゲと葉っぱの形の抹茶クッキーが入った彩豊かなクッキー缶です。" data-en="A colorful cookie tin featuring sakura-shaped butter snow cookies, sakura-flavored chocolate sandwich cookies, strawberry meringue, and leaf-shaped matcha cookies." data-zh="色彩缤纷的曲奇铁盒，内含樱花形状的雪球饼干、樱花味巧克力夹心饼干、草莓蛋白霜和叶形抹茶饼干。">ほろほろとした食感で桜の花びらの形をした桜風味のブールドネージュ、桜風味のチョコをサンドした桜クッキー、苺のメレンゲと葉っぱの形の抹茶クッキーが入った彩豊かなクッキー缶です。</p>
+            <div class="product-meta">
+              <span class="product-tag">約12cm×12cm</span>
+              <span class="product-tag room-temp" data-ja="常温配送" data-en="Room Temp." data-zh="常温配送">常温配送</span>
+              <span class="product-tag" data-ja="賞味期限 3週間" data-en="3 weeks" data-zh="保质期3周">賞味期限 3週間</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- 京都 voyage -->
+        <div class="product-card reveal reveal-delay-1">
+          <div class="product-img"><img src="images/kyoto-voyage.jpg" alt="京都 voyage"></div>
+          <div class="product-body">
+            <h3 class="product-name-ja" data-ja="京都 voyage" data-en="Kyoto Voyage" data-zh="京都 voyage">京都 voyage</h3>
+            <p class="product-name-sub">Kyoto Voyage</p>
+            <p class="product-desc" data-ja="舞妓さんの足元を彩る「こっぽり」をはじめとした京都にゆかりのある風景をクッキーに仕上げました。季節によって内容が変わります。" data-en="Inspired by iconic elements of Kyoto, including koppori—the traditional footwear worn by maiko—these cookies beautifully capture the essence of Kyoto's scenery." data-zh="以京都标志性元素为灵感，包括舞妓穿的传统木屐「こっぽり」等，将京都的风景呈现为精美饼干。">舞妓さんの足元を彩る「こっぽり」をはじめとした京都にゆかりのある風景をクッキーに仕上げました。季節によって内容が変わります。</p>
+            <div class="product-meta">
+              <span class="product-tag">約12cm×12cm</span>
+              <span class="product-tag room-temp" data-ja="常温配送" data-en="Room Temp." data-zh="常温配送">常温配送</span>
+              <span class="product-tag" data-ja="賞味期限 3週間" data-en="3 weeks" data-zh="保质期3周">賞味期限 3週間</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- カヌレ -->
+        <div class="product-card reveal reveal-delay-2">
+          <div class="product-img"><img src="images/canele.jpg" alt="カヌレ"></div>
+          <div class="product-body">
+            <h3 class="product-name-ja" data-ja="カヌレ" data-en="Canelé" data-zh="可丽露">カヌレ</h3>
+            <p class="product-name-sub">Canelé / 可丽露</p>
+            <p class="product-desc" data-ja="京都の景色をあしらった缶に16種類のちいさなカヌレを詰めました。プレーン、宇治抹茶、ココナッツ、チョコ、ほうじ茶、玄米と豆乳など多彩なフレーバー。" data-en="A tin decorated with Kyoto scenery, filled with 16 varieties of mini canelés including Plain, Uji Matcha, Coconut, Chocolate, Hojicha, and more." data-zh="以京都风景装饰的铁盒，内装16种迷你可丽露。口味包括原味、宇治抹茶、椰子、巧克力、焙茶等。">京都の景色をあしらった缶に16種類のちいさなカヌレを詰めました。プレーン、宇治抹茶、ココナッツ、チョコ、ほうじ茶、玄米と豆乳など多彩なフレーバー。</p>
+            <div class="product-meta">
+              <span class="product-tag" data-ja="1缶16個入り" data-en="16 pcs/tin" data-zh="每盒16个">1缶16個入り</span>
+              <span class="product-tag frozen" data-ja="冷凍配送" data-en="Frozen" data-zh="冷冻配送">冷凍配送</span>
+              <span class="product-tag" data-ja="解凍後 冷蔵2日" data-en="2 days after thawing" data-zh="解冻后冷藏2天">解凍後 冷蔵2日</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- おはぎカヌレ -->
+        <div class="product-card reveal">
+          <div class="product-img"><img src="images/ohagi-canele.jpg" alt="おはぎカヌレ"></div>
+          <div class="product-body">
+            <h3 class="product-name-ja" data-ja="おはぎカヌレ" data-en="Ohagi Canelé" data-zh="可丽露造型的御萩">おはぎカヌレ</h3>
+            <p class="product-name-sub">Ohagi Canelé / 可丽露造型的御萩</p>
+            <p class="product-desc" data-ja="北海道産小豆を使用したなめらかな口溶けの様々な味わいが楽しめる華やかなカヌレ型のおはぎです。玄米茶とカリカリ梅、ほうじ茶と胡桃など10種のフレーバー。" data-en="Elegant ohagi in canelé form, made with Hokkaido red beans. Flavors include Genmaicha & Pickled Plum, Hojicha & Walnut, and more." data-zh="使用北海道小豆制作的华丽可丽露造型御萩，有玄米茶酸梅、焙茶核桃等10种口味。">北海道産小豆を使用したなめらかな口溶けの様々な味わいが楽しめる華やかなカヌレ型のおはぎです。玄米茶とカリカリ梅、ほうじ茶と胡桃など10種のフレーバー。</p>
+            <div class="product-meta">
+              <span class="product-tag" data-ja="4個・6個・10個入り" data-en="4/6/10 pcs" data-zh="4·6·10个装">4個・6個・10個入り</span>
+              <span class="product-tag frozen" data-ja="冷凍配送" data-en="Frozen" data-zh="冷冻配送">冷凍配送</span>
+              <span class="product-tag" data-ja="解凍後 当日中" data-en="Same day" data-zh="当日食用">解凍後 当日中</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- 手焼きどらわらび -->
+        <div class="product-card reveal reveal-delay-1">
+          <div class="product-img"><img src="images/dorayaki-warabi.jpg" alt="手焼きどらわらび"></div>
+          <div class="product-body">
+            <h3 class="product-name-ja" data-ja="手焼きどらわらび" data-en="Handmade Dorayaki with Warabi Mochi" data-zh="手工铜锣烧蕨饼">手焼きどらわらび</h3>
+            <p class="product-name-sub">Handmade Dorayaki with Warabi Mochi / 手工铜锣烧蕨饼</p>
+            <p class="product-desc" data-ja="もっちりとしたどら焼きの生地とわらび餅に、まろやかなクリームが至福の時をお約束します。宇治抹茶・ほうじ茶の2種類。" data-en="A rich blend of dorayaki and warabi mochi with mellow cream for a moment of bliss. Uji Matcha and Hojicha flavors." data-zh="Q弹的铜锣烧面皮与蕨饼搭配醇厚的奶油，有宇治抹茶和焙茶两种口味。">もっちりとしたどら焼きの生地とわらび餅に、まろやかなクリームが至福の時をお約束します。宇治抹茶・ほうじ茶の2種類。</p>
+            <div class="product-meta">
+              <span class="product-tag" data-ja="5個・10個入り" data-en="5/10 pcs" data-zh="5·10个装">5個・10個入り</span>
+              <span class="product-tag frozen" data-ja="冷凍配送" data-en="Frozen" data-zh="冷冻配送">冷凍配送</span>
+              <span class="product-tag" data-ja="解凍後 当日中" data-en="Same day" data-zh="当日食用">解凍後 当日中</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- 濃い茶のバターカステラ -->
+        <div class="product-card reveal reveal-delay-2">
+          <div class="product-img"><img src="images/castella.jpg" alt="濃い茶のバターカステラ"></div>
+          <div class="product-body">
+            <h3 class="product-name-ja" data-ja="濃い茶のバターカステラ" data-en="Rich Matcha Butter Castella" data-zh="浓茶奶油蜂蜜蛋糕">濃い茶のバターカステラ</h3>
+            <p class="product-name-sub">Rich Matcha Butter Castella / 浓茶奶油蜂蜜蛋糕</p>
+            <p class="product-desc" data-ja="香り高い濃茶の風味とずっしりとした濃厚な味わいが楽しめるしっとりと口溶けのよいカステラです。宇治抹茶・ほうじ茶の2種類。" data-en="A moist, melt-in-the-mouth castella rich in the fragrant flavor of matcha. Uji Matcha and Hojicha flavors." data-zh="口感湿润细腻的蛋糕，浓郁的茶香令人陶醉。有宇治抹茶和焙茶两种口味。">香り高い濃茶の風味とずっしりとした濃厚な味わいが楽しめるしっとりと口溶けのよいカステラです。宇治抹茶・ほうじ茶の2種類。</p>
+            <div class="product-meta">
+              <span class="product-tag">約12cm×12cm</span>
+              <span class="product-tag room-temp" data-ja="常温配送" data-en="Room Temp." data-zh="常温配送">常温配送</span>
+              <span class="product-tag" data-ja="賞味期限 2週間" data-en="2 weeks" data-zh="保质期2周">賞味期限 2週間</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- ロールケーキ -->
+        <div class="product-card reveal">
+          <div class="product-img"><img src="images/roll-cake-cross.jpg" alt="ロールケーキ"></div>
+          <div class="product-body">
+            <h3 class="product-name-ja" data-ja="ロールケーキ" data-en="Roll Cake" data-zh="瑞士卷">ロールケーキ</h3>
+            <p class="product-name-sub">Roll Cake / 瑞士卷</p>
+            <p class="product-desc" data-ja="宇治抹茶ロールケーキには粒あん、ほうじ茶ロールケーキには黒豆入り。それぞれの茶葉の風味を活かした贅沢なロールケーキ。" data-en="Uji Matcha roll cake with sweet red beans; Hojicha roll cake with black soybeans. Each showcases its tea's unique character." data-zh="宇治抹茶瑞士卷内含红豆馅，焙茶瑞士卷内含黑豆。充分发挥各种茶叶风味的奢华卷蛋糕。">宇治抹茶ロールケーキには粒あん、ほうじ茶ロールケーキには黒豆入り。それぞれの茶葉の風味を活かした贅沢なロールケーキ。</p>
+            <div class="product-meta">
+              <span class="product-tag">約11cm×8cm</span>
+              <span class="product-tag frozen" data-ja="冷凍配送" data-en="Frozen" data-zh="冷冻配送">冷凍配送</span>
+              <span class="product-tag" data-ja="解凍後 当日中" data-en="Same day" data-zh="当日食用">解凍後 当日中</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- テリーヌ -->
+        <div class="product-card reveal reveal-delay-1">
+          <div class="product-img"><img src="images/terrine.jpg" alt="テリーヌ"></div>
+          <div class="product-body">
+            <h3 class="product-name-ja" data-ja="テリーヌ" data-en="Terrine" data-zh="浓厚蛋糕">テリーヌ</h3>
+            <p class="product-name-sub">Terrine / 浓厚蛋糕</p>
+            <p class="product-desc" data-ja="しっとり濃厚な舌触りと圧巻の風味の豊かさをお楽しみください。宇治抹茶・ほうじ茶の2種類。" data-en="Enjoy the moist and rich texture with exceptional flavor depth. Uji Matcha and Hojicha flavors." data-zh="请享受湿润浓郁的口感和令人惊叹的丰富风味。有宇治抹茶和焙茶两种口味。">しっとり濃厚な舌触りと圧巻の風味の豊かさをお楽しみください。宇治抹茶・ほうじ茶の2種類。</p>
+            <div class="product-meta">
+              <span class="product-tag">約13cm×6cm</span>
+              <span class="product-tag frozen" data-ja="冷凍配送" data-en="Frozen" data-zh="冷冻配送">冷凍配送</span>
+              <span class="product-tag" data-ja="解凍後 冷蔵3日" data-en="3 days" data-zh="冷藏3天">解凍後 冷蔵3日</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- 焼き菓子詰め合わせ -->
+        <div class="product-card reveal reveal-delay-2">
+          <div class="product-img"><img src="images/baked-sweets-assortment.jpg" alt="焼き菓子詰め合わせ"></div>
+          <div class="product-body">
+            <h3 class="product-name-ja" data-ja="焼き菓子詰め合わせ" data-en="Baked Sweets Assortment" data-zh="烘焙点心礼盒">焼き菓子詰め合わせ</h3>
+            <p class="product-name-sub">Baked Sweets Assortment / 烘焙点心礼盒</p>
+            <p class="product-desc" data-ja="濃い茶のバターカステラやお茶のクッキー、フィナンシェやマドレーヌなどこだわりの焼き菓子の詰め合わせです。" data-en="A curated set of baked treats including tea-flavored castella, cookies, financiers, and madeleines." data-zh="精选烘焙点心礼盒，包含浓茶奶油蛋糕、茶味饼干、费南雪和玛德琳等。">濃い茶のバターカステラやお茶のクッキー、フィナンシェやマドレーヌなどこだわりの焼き菓子の詰め合わせです。</p>
+            <div class="product-meta">
+              <span class="product-tag">約18cm×26cm</span>
+              <span class="product-tag room-temp" data-ja="常温配送" data-en="Room Temp." data-zh="常温配送">常温配送</span>
+              <span class="product-tag" data-ja="賞味期限 3週間" data-en="3 weeks" data-zh="保质期3周">賞味期限 3週間</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== CREATORS ==================== -->
+  <section class="section creators" id="creators">
+    <div class="section-inner">
+      <div class="section-header reveal">
+        <p class="section-label">Artisans</p>
+        <h2 class="section-title-ja" data-ja="つぶら乃のスイーツを創造する人物たち" data-en="The Creators Behind Tsuburano" data-zh="创造「つぶら乃」甜点的匠人们">つぶら乃のスイーツを創造する人物たち</h2>
+        <div class="section-line"></div>
+      </div>
+      <div class="creators-grid">
+        <div class="creator-card reveal">
+          <div class="creator-portrait chef"><img src="images/chef-nakamura.png" alt="シェフパティシエ 中村一志"></div>
+          <p class="creator-role" data-ja="シェフパティシエ" data-en="Executive Pastry Chef" data-zh="行政糕点主厨">シェフパティシエ</p>
+          <h3 class="creator-name-ja" data-ja="中村 一志" data-en="Kazushi Nakamura" data-zh="中村 一志">中村 一志</h3>
+          <p class="creator-name-en">Kazushi Nakamura</p>
+          <p class="creator-desc" data-ja="温故知新に現代の息吹を吹き込む、つぶら乃のスタイルをスイーツに昇華させるシェフパティシエ。華やかで好奇心をそそる発想力と、スイーツとしての美味しさを追求する姿勢を持ち合わせた人物です。" data-en="Executive Pastry Chef embodying the spirit of 'respecting the old while embracing the new' to craft elegant, curious, and delicious creations." data-zh="将「温故知新」的精神注入现代，将つぶら乃的风格升华为甜点的行政糕点主厨。兼具华丽而引人好奇的创意与追求极致美味的执着。">温故知新に現代の息吹を吹き込む、つぶら乃のスタイルをスイーツに昇華させるシェフパティシエ。華やかで好奇心をそそる発想力と、スイーツとしての美味しさを追求する姿勢を持ち合わせた人物です。</p>
+        </div>
+        <div class="creator-card reveal reveal-delay-1">
+          <div class="creator-portrait tea-master"><img src="images/tea-master-azuma.jpg" alt="茶師十段 東源兵衛"></div>
+          <p class="creator-role" data-ja="茶師十段" data-en="10th-Dan Tea Master" data-zh="十段茶师">茶師十段</p>
+          <h3 class="creator-name-ja" data-ja="東 源兵衛" data-en="Genbei Azuma" data-zh="东 源兵卫">東 源兵衛</h3>
+          <p class="creator-name-en">Genbei Azuma</p>
+          <p class="creator-desc" data-ja="つぶら乃では日本最高峰の茶処宇治の契約茶園で取れる茶葉を使用しています。約七十年の歴史の中でもわずかしか認定されていない最高段位「茶審査技術十段（茶師十段）」を持つ東源兵衛が厳選しています。" data-en="A certified 10th-level tea appraiser—an extremely rare title in 70 years of Japanese tea history—personally selects Uji tea leaves from our exclusive contracted tea gardens." data-zh="つぶら乃使用日本顶级茶产地宇治的签约茶园所产茶叶。由拥有在约七十年历史中仅有少数人获得认证的最高段位「茶审查技术十段」的东源兵卫亲自精选。">つぶら乃では日本最高峰の茶処宇治の契約茶園で取れる茶葉を使用しています。約七十年の歴史の中でもわずかしか認定されていない最高段位「茶審査技術十段（茶師十段）」を持つ東源兵衛が厳選しています。</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== OEM ==================== -->
+  <section class="section oem" id="oem">
+    <div class="section-inner">
+      <div class="section-header reveal">
+        <p class="section-label">OEM Manufacturing</p>
+        <h2 class="section-title-ja" data-ja="OEM製造のご案内" data-en="OEM Manufacturing Services" data-zh="OEM代工服务">OEM製造のご案内</h2>
+        <div class="section-line"></div>
+      </div>
+
+      <div class="oem-intro reveal">
+        <p data-ja="TSUBURANO SWEETS FACTORYでは、自社ブランド「つぶら乃」の製造で培った高い技術力と品質管理体制を活かし、他社様からのOEM・ODM製造を承っております。お客様のブランドに合わせたオリジナルスイーツの開発・製造をトータルでサポートいたします。" data-en="At TSUBURANO SWEETS FACTORY, we leverage the advanced expertise and quality control systems developed through manufacturing our 'Tsuburano' brand to offer OEM and ODM manufacturing services. We provide total support for developing and manufacturing original sweets tailored to your brand." data-zh="TSUBURANO SWEETS FACTORY凭借制造自有品牌「つぶら乃」所积累的高超技术和品质管理体系，承接OEM·ODM代工业务。我们为客户提供从开发到制造的全方位原创甜点支持。">TSUBURANO SWEETS FACTORYでは、自社ブランド「つぶら乃」の製造で培った高い技術力と品質管理体制を活かし、他社様からのOEM・ODM製造を承っております。お客様のブランドに合わせたオリジナルスイーツの開発・製造をトータルでサポートいたします。</p>
+      </div>
+
+      <div class="oem-features">
+        <div class="oem-feature reveal" style="background-image: url('images/oem-ingredients.jpg');">
+          <div class="oem-icon">🍵</div>
+          <h4 data-ja="高品質な素材力" data-en="Premium Ingredients" data-zh="高品质原料">高品質な素材力</h4>
+          <p data-ja="茶師十段が厳選した宇治茶をはじめ、北海道産小豆、国産素材にこだわった原料調達ネットワークをご活用いただけます。" data-en="Access our ingredient network featuring Uji tea selected by our 10th-level tea master, Hokkaido red beans, and premium domestic ingredients." data-zh="可使用我们的原料采购网络，包括十段茶师精选的宇治茶、北海道小豆及国产优质原料。">茶師十段が厳選した宇治茶をはじめ、北海道産小豆、国産素材にこだわった原料調達ネットワークをご活用いただけます。</p>
+        </div>
+        <div class="oem-feature reveal reveal-delay-1" style="background-image: url('images/oem-expertise-2.jpg');">
+          <div class="oem-icon">👨‍🍳</div>
+          <h4 data-ja="確かな技術力" data-en="Proven Expertise" data-zh="精湛的技术">確かな技術力</h4>
+          <p data-ja="シェフパティシエを中心とした経験豊富な製菓チームが、レシピ開発から量産化まで一貫して対応いたします。" data-en="Our experienced team, led by our Executive Pastry Chef, handles everything from recipe development to mass production." data-zh="以行政糕点主厨为核心的经验丰富的制果团队，从配方开发到量产化一贯对应。">シェフパティシエを中心とした経験豊富な製菓チームが、レシピ開発から量産化まで一貫して対応いたします。</p>
+        </div>
+        <div class="oem-feature reveal reveal-delay-2" style="background-image: url('images/factory-oven.jpg');">
+          <div class="oem-icon">🏭</div>
+          <h4 data-ja="充実の製造設備" data-en="Advanced Facilities" data-zh="完善的制造设备">充実の製造設備</h4>
+          <p data-ja="最新の製造設備と厳格な品質管理体制を備えた自社工場から、常温・冷凍の両方の配送に対応した製品を製造いたします。" data-en="Our factory with modern facilities and strict quality control produces items for both room temperature and frozen distribution." data-zh="配备最新制造设备和严格品质管理体系的自有工厂，可生产常温和冷冻两种配送方式的产品。">最新の製造設備と厳格な品質管理体制を備えた自社工場から、常温・冷凍の両方の配送に対応した製品を製造いたします。</p>
+        </div>
+      </div>
+
+      <div class="oem-categories reveal">
+        <h3 data-ja="対応可能な製品カテゴリ" data-en="Product Categories" data-zh="可对应的产品类别">対応可能な製品カテゴリ</h3>
+        <div class="oem-cat-grid">
+          <div class="oem-cat-item" style="background-image: url('images/cookie-fleur.jpg');">
+            <div class="cat-icon">🍪</div>
+            <div class="cat-name" data-ja="クッキー・焼き菓子" data-en="Cookies & Baked Goods" data-zh="饼干·烘焙点心">クッキー・焼き菓子</div>
+          </div>
+          <div class="oem-cat-item" style="background-image: url('images/castella.jpg');">
+            <div class="cat-icon">🍰</div>
+            <div class="cat-name" data-ja="カステラ・ケーキ" data-en="Castella & Cakes" data-zh="蛋糕类">カステラ・ケーキ</div>
+          </div>
+          <div class="oem-cat-item" style="background-image: url('images/canele.jpg');">
+            <div class="cat-icon">🧁</div>
+            <div class="cat-name" data-ja="カヌレ・洋菓子" data-en="Canelé & Western Sweets" data-zh="可丽露·西式点心">カヌレ・洋菓子</div>
+          </div>
+        </div>
+        <p style="text-align:center; font-family:var(--font-mincho); font-size:0.88rem; color:var(--ink-light); letter-spacing:0.06em; margin-top:24px; line-height:1.8;" data-ja="上記以外にも対応商品がございます。お気軽にご相談くださいませ。" data-en="We also handle products beyond the categories above. Please feel free to contact us." data-zh="除上述类别外，我们还可对应其他商品。欢迎随时咨询。">上記以外にも対応商品がございます。お気軽にご相談くださいませ。</p>
+      </div>
+
+      <div class="oem-flow reveal">
+        <h3 data-ja="ご依頼の流れ" data-en="Order Process" data-zh="委托流程">ご依頼の流れ</h3>
+        <div class="oem-steps">
+          <div class="oem-step">
+            <div class="oem-step-num">1</div>
+            <h5 data-ja="お問い合わせ" data-en="Inquiry" data-zh="咨询">お問い合わせ</h5>
+            <p data-ja="お電話またはメールにて<br>お気軽にご相談ください。" data-en="Contact us by phone<br>or email." data-zh="请通过电话或邮件<br>联系我们。">お電話またはメールにて<br>お気軽にご相談ください。</p>
+            <div class="oem-step-connector"></div>
+          </div>
+          <div class="oem-step">
+            <div class="oem-step-num">2</div>
+            <h5 data-ja="ヒアリング・企画" data-en="Planning" data-zh="调研·企划">ヒアリング・企画</h5>
+            <p data-ja="ご要望を詳しくお伺いし、<br>最適なレシピをご提案。" data-en="We listen to your needs<br>and propose optimal recipes." data-zh="详细了解需求，<br>提出最佳方案。">ご要望を詳しくお伺いし、<br>最適なレシピをご提案。</p>
+            <div class="oem-step-connector"></div>
+          </div>
+          <div class="oem-step">
+            <div class="oem-step-num">3</div>
+            <h5 data-ja="試作・調整" data-en="Prototyping" data-zh="试制·调整">試作・調整</h5>
+            <p data-ja="試作品を作成し、味・見た目・<br>パッケージなどを調整。" data-en="We create prototypes and<br>refine taste and packaging." data-zh="制作试作品，<br>调整口味和包装。">試作品を作成し、味・見た目・<br>パッケージなどを調整。</p>
+            <div class="oem-step-connector"></div>
+          </div>
+          <div class="oem-step">
+            <div class="oem-step-num">4</div>
+            <h5 data-ja="量産・納品" data-en="Production" data-zh="量产·交付">量産・納品</h5>
+            <p data-ja="自社工場にて製造し、<br>ご指定の場所へ納品。" data-en="Manufactured in our factory<br>and delivered to you." data-zh="在自有工厂制造，<br>交付到指定地点。">自社工場にて製造し、<br>ご指定の場所へ納品。</p>
+            <div class="oem-step-connector"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== 催事のご案内 ==================== -->
+  <section class="section saiji" id="saiji">
+    <div class="section-inner">
+      <div class="section-header reveal">
+        <p class="section-label">Event</p>
+        <h2 class="section-title-ja" data-ja="催事のご案内" data-en="Event Information" data-zh="活动信息">催事のご案内</h2>
+        <div class="section-line"></div>
+      </div>
+
+      <!-- ▼▼▼ 開催中・開催予定の催事 ▼▼▼ -->
+
+      <div class="saiji-card reveal">
+        <div class="saiji-badge" data-ja="開催中" data-en="Now Open" data-zh="举办中">開催中</div>
+        <h3 class="saiji-store" data-ja="大丸 東京店 1F スイーツセレクション" data-en="Daimaru Tokyo Store 1F Sweets Selection" data-zh="大丸 东京店 1F 甜点精选">大丸 東京店 1F スイーツセレクション</h3>
+        <p class="saiji-date">2026年6月24日（水）〜 6月30日（火）</p>
+        <div class="saiji-divider"></div>
+        <div class="saiji-products-label" data-ja="販売商品" data-en="Products" data-zh="销售商品">販売商品</div>
+        <ul class="saiji-products">
+          <li data-ja="京都 Voyage" data-en="Kyoto Voyage" data-zh="京都 Voyage">京都 Voyage</li>
+          <li data-ja="ブールドネージュ" data-en="Boule de Neige" data-zh="雪球饼干">ブールドネージュ</li>
+          <li data-ja="カヌレアソート" data-en="Canelé Assortment" data-zh="可丽露什锦">カヌレアソート</li>
+          <li data-ja="どらわらび" data-en="Dora-Warabi" data-zh="铜锣蕨饼">どらわらび</li>
+          <li data-ja="おはぎカヌレ" data-en="Ohagi Canelé" data-zh="萩饼可丽露">おはぎカヌレ</li>
+        </ul>
+        <p class="saiji-message" data-ja="お近くにお越しの際は、ぜひお立ち寄りくださいませ。" data-en="We look forward to your visit if you are in the area." data-zh="如果您在附近，欢迎前来光临。">お近くにお越しの際は、ぜひお立ち寄りくださいませ。</p>
+      </div>
+
+      <!-- ▲▲▲ 開催中・開催予定の催事ここまで ▲▲▲ -->
+
+      <!--
+      ============================================================
+        催事の追加方法（テンプレート）
+      ============================================================
+      以下をコピーして「開催中・開催予定」エリアに貼り付けてください。
+      終了したら「過去の催事」の saiji-past-list 内に移動してください。
+
+      ＜バッジの種類＞
+      - 開催中:   <div class="saiji-badge">開催中</div>
+      - 開催予定: <div class="saiji-badge upcoming">開催予定</div>
+      - 終了:     <div class="saiji-badge ended">終了</div>
+
+      ＜テンプレート＞
+      <div class="saiji-card reveal">
+        <div class="saiji-badge">開催中</div>
+        <h3 class="saiji-store">店舗名</h3>
+        <p class="saiji-date">20XX年X月X日（X）〜 X月X日（X）</p>
+        <div class="saiji-divider"></div>
+        <div class="saiji-products-label">販売商品</div>
+        <ul class="saiji-products">
+          <li>商品名1</li>
+          <li>商品名2</li>
+        </ul>
+        <p class="saiji-message">お近くにお越しの際は、ぜひお立ち寄りくださいませ。</p>
+      </div>
+      ============================================================
+      -->
+
+      <!-- ▼▼▼ 過去の催事 ▼▼▼ -->
+      <div class="saiji-past reveal">
+        <button class="saiji-past-toggle" id="saijiPastToggle"
+                data-ja="過去の催事を見る" data-en="View Past Events" data-zh="查看过去的活动">
+          過去の催事を見る <span class="arrow">▼</span>
+        </button>
+        <div class="saiji-past-list" id="saijiPastList">
+          <!-- 終了した催事をここに追加（新しい順） -->
+        </div>
+      </div>
+      <!-- ▲▲▲ 過去の催事ここまで ▲▲▲ -->
+
+    </div>
+  </section>
+
+  <!-- ==================== STORES ==================== -->
+  <section class="section stores" id="stores">
+    <div class="section-inner">
+      <div class="section-header reveal">
+        <p class="section-label">Store Information</p>
+        <h2 class="section-title-ja" data-ja="店舗・施設のご紹介" data-en="Store Information" data-zh="店铺信息">店舗・施設のご紹介</h2>
+        <div class="section-line"></div>
+      </div>
+
+      <div class="stores-grid">
+        <!-- 京都本店 -->
+        <div class="store-card main-store reveal">
+          <div>
+            <span class="store-badge" data-ja="本店" data-en="Main Store" data-zh="总店">本店</span>
+            <h3 class="store-name-ja" data-ja="京都本店" data-en="Kyoto Main Store" data-zh="京都总店">京都本店</h3>
+            <p class="store-name-en">Kyoto Main Store / 京都总店</p>
+            <div class="store-info">
+              <p>〒605-0827</p>
+              <p data-ja="京都府京都市東山区八坂上町368-1-8" data-en="368-1-8 Yasakakami-cho, Higashiyama-ku, Kyoto" data-zh="京都府京都市东山区八坂上町368-1-8">京都府京都市東山区八坂上町368-1-8</p>
+              <p>TEL：<a href="tel:075-741-8248">075-741-8248</a></p>
+              <p class="store-note" data-ja="※ ご予約はTableCheckまたは一休.comよりお願いいたします。コースは予約制です。" data-en="Reservations via TableCheck or Ikkyu.com. All courses require reservation." data-zh="可通过TableCheck或一休.com预约。所有套餐需要预约。">※ ご予約はTableCheckまたは一休.comよりお願いいたします。コースは予約制です。</p>
+            </div>
+          </div>
+          <div class="store-image-placeholder">
+            <img src="images/kyoto-main-store.jpg" alt="つぶら乃 京都本店">
+          </div>
+        </div>
+
+        <!-- 新宿御苑店 -->
+        <div class="store-card reveal">
+          <h3 class="store-name-ja" data-ja="新宿御苑店" data-en="Shinjuku Gyoen Store" data-zh="新宿御苑店">新宿御苑店</h3>
+          <p class="store-name-en">Shinjuku Gyoen Store / 新宿御苑店</p>
+          <div class="store-info">
+            <p>〒160-0014</p>
+            <p data-ja="東京都新宿区内藤町１１ 新宿御苑内" data-en="11 Naito-cho, Shinjuku-ku, Tokyo" data-zh="东京都新宿区内藤町11 新宿御苑内">東京都新宿区内藤町１１ 新宿御苑内</p>
+            <p>TEL：<a href="tel:03-3341-1461">03-3341-1461</a></p>
+          </div>
+        </div>
+
+        <!-- 工場 -->
+        <div class="store-card reveal reveal-delay-1">
+          <span class="store-badge factory" data-ja="自社工場" data-en="Factory" data-zh="自有工厂">自社工場</span>
+          <h3 class="store-name-ja">TSUBURANO SWEETS FACTORY</h3>
+          <p class="store-name-en">TSUBURANO 甜点工厂</p>
+          <div class="store-info">
+            <p>〒590-0535</p>
+            <p data-ja="大阪府泉南市りんくう南浜４−２８" data-en="4-28 Rinku Minamihama, Sennan City, Osaka" data-zh="大阪府泉南市临空南滨4-28">大阪府泉南市りんくう南浜４−２８</p>
+            <p>TEL：<a href="tel:072-485-1023">072-485-1023</a></p>
+            <p class="store-note" data-ja="自社工場より直送いたします。" data-en="We ship directly from our factory." data-zh="从自有工厂直接发货。">自社工場より直送いたします。</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== ORDER ==================== -->
+  <section class="section order" id="order">
+    <div class="section-inner">
+      <div class="section-header reveal">
+        <p class="section-label">How to Order</p>
+        <h2 class="section-title-ja" data-ja="ご注文方法" data-en="How to Order" data-zh="订购方式">ご注文方法</h2>
+        <div class="section-line"></div>
+      </div>
+      <div class="order-content">
+        <div class="order-text reveal">
+          <h3 data-ja="オンラインショップ" data-en="Online Shop" data-zh="网上商店">オンラインショップ</h3>
+          <p data-ja="商品のご注文はオンラインショップが便利です。トップページを下へスクロールすると商品一覧がご覧になれます。配送状態や賞味期限をご確認いただき、商品をカートへ追加してください。" data-en="Our online shop is the most convenient way to order. Scroll down on the top page to browse products. Check shipping conditions and best-before dates before adding to cart." data-zh="通过网上商店订购最为便捷。向下滚动首页即可查看商品列表。请确认配送状态和保质期后加入购物车。">商品のご注文はオンラインショップが便利です。トップページを下へスクロールすると商品一覧がご覧になれます。配送状態や賞味期限をご確認いただき、商品をカートへ追加してください。</p>
+          <a href="https://tsuburano.stores.jp/" class="order-btn" target="_blank" rel="noopener noreferrer" data-ja="オンラインショップへ" data-en="Visit Online Shop" data-zh="前往网上商店">オンラインショップへ</a>
+        </div>
+        <div class="reveal reveal-delay-1">
+          <ul class="order-info-list">
+            <li>
+              <span class="order-label" data-ja="お支払い方法" data-en="Payment" data-zh="支付方式">お支払い方法</span>
+              <span class="order-value" data-ja="クレジットカード決済。注文時点でお支払いが確定いたします。" data-en="Credit card. Payment confirmed at time of order." data-zh="信用卡支付。下单时确认付款。">クレジットカード決済。注文時点でお支払いが確定いたします。</span>
+            </li>
+            <li>
+              <span class="order-label" data-ja="配送" data-en="Delivery" data-zh="配送">配送</span>
+              <span class="order-value" data-ja="ご依頼から7日以内に発送いたします。" data-en="Shipped within 7 days of order." data-zh="收到订单后7日内发货。">ご依頼から7日以内に発送いたします。</span>
+            </li>
+            <li>
+              <span class="order-label" data-ja="返品について" data-en="Returns" data-zh="退货">返品について</span>
+              <span class="order-value" data-ja="商品に欠陥がある場合を除き、返品には応じません。" data-en="No returns unless defective." data-zh="除产品缺陷外不接受退货。">商品に欠陥がある場合を除き、返品には応じません。</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== CONTACT ==================== -->
+  <section class="section contact" id="contact">
+    <div class="section-inner">
+      <div class="section-header reveal">
+        <p class="section-label">Contact</p>
+        <h2 class="section-title-ja" data-ja="お問い合わせ" data-en="Contact Us" data-zh="联系我们">お問い合わせ</h2>
+        <div class="section-line"></div>
+      </div>
+      <div class="contact-content reveal">
+        <p class="contact-lead" data-ja="商品に関するお問い合わせ・OEM製造のご相談など、<br>下記フォームよりお気軽にご連絡ください。" data-en="For product inquiries or OEM manufacturing consultations,<br>please fill out the form below." data-zh="如有产品咨询或OEM代工洽谈，<br>请填写以下表单联系我们。">商品に関するお問い合わせ・OEM製造のご相談など、<br>下記フォームよりお気軽にご連絡ください。</p>
+
+        <form class="contact-form" id="contactForm">
+          <input type="text" name="_honey" style="display:none">
+
+          <div class="form-group">
+            <label class="form-label" data-ja="貴社名" data-en="Company Name" data-zh="公司名称">貴社名</label>
+            <input type="text" name="company" class="form-input" placeholder="株式会社〇〇">
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" data-ja="担当者名<span class='required'>必須</span>" data-en="Contact Person<span class='required'>Required</span>" data-zh="负责人姓名<span class='required'>必填</span>">担当者名<span class="required">必須</span></label>
+            <input type="text" name="name" class="form-input" placeholder="山田 太郎" required>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" data-ja="ご連絡先メールアドレス<span class='required'>必須</span>" data-en="Email Address<span class='required'>Required</span>" data-zh="邮箱地址<span class='required'>必填</span>">ご連絡先メールアドレス<span class="required">必須</span></label>
+            <input type="email" name="email" class="form-input" placeholder="example@company.co.jp" required>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" data-ja="お電話番号" data-en="Phone Number" data-zh="电话号码">お電話番号</label>
+            <input type="tel" name="phone" class="form-input" placeholder="090-0000-0000">
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" data-ja="お問い合わせ内容<span class='required'>必須</span>" data-en="Inquiry Details<span class='required'>Required</span>" data-zh="咨询内容<span class='required'>必填</span>">お問い合わせ内容<span class="required">必須</span></label>
+            <textarea name="message" class="form-textarea" placeholder="お問い合わせ内容をご記入ください。" required></textarea>
+          </div>
+
+          <button type="submit" class="form-submit" id="formSubmitBtn" data-ja="送信する" data-en="Submit" data-zh="提交">送信する</button>
+        </form>
+
+        <div class="contact-thankyou" id="contactThankyou">
+          <div class="contact-thankyou-icon">✓</div>
+          <h3>お問い合わせいただき<br>誠にありがとうございます。</h3>
+          <p>追って担当者よりご連絡させていただきます。</p>
+        </div>
+
+        <div class="contact-info-bottom">
+          <div class="contact-tel"><a href="tel:075-741-8779">075-741-8779</a></div>
+          <p style="font-size:0.82rem; color:var(--ink-muted); letter-spacing:0.08em; margin-bottom:12px;" data-ja="京都本部事務所（馬町珈琲）" data-en="Kyoto Head Office (Machimachi Coffee)" data-zh="京都总部办公室（马町�的啡）">京都本部事務所（馬町珈琲）</p>
+          <p class="contact-address">
+            TSUBURANO SWEETS FACTORY<br>
+            <span data-ja="〒590-0535 大阪府泉南市りんくう南浜４−２８" data-en="4-28 Rinku Minamihama, Sennan City, Osaka 590-0535" data-zh="〒590-0535 大阪府泉南市临空南滨4-28">〒590-0535 大阪府泉南市りんくう南浜４−２８</span>
+          </p>
+          <div class="contact-company" data-ja="運営：株式会社緑歩園（Ryokuhoen Co., Ltd.）" data-en="Operated by Ryokuhoen Co., Ltd." data-zh="运营：株式会社绿步园（Ryokuhoen Co., Ltd.）">運営：株式会社緑歩園（Ryokuhoen Co., Ltd.）</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== FOOTER ==================== -->
+  <footer class="footer">
+    <div class="footer-inner">
+      <div class="footer-top">
+        <div>
+          <p class="footer-brand">TSUBURANO SWEETS FACTORY</p>
+          <p class="footer-company" data-ja="株式会社緑歩園 / Ryokuhoen Co., Ltd." data-en="Ryokuhoen Co., Ltd." data-zh="株式会社绿步园">株式会社緑歩園 / Ryokuhoen Co., Ltd.</p>
+        </div>
+        <ul class="footer-links">
+          <li><a href="#concept" data-ja="コンセプト" data-en="Concept" data-zh="理念">コンセプト</a></li>
+          <li><a href="#products" data-ja="商品紹介" data-en="Products" data-zh="产品介绍">商品紹介</a></li>
+          <li><a href="#oem" data-ja="OEM製造" data-en="OEM" data-zh="OEM代工">OEM製造</a></li>
+          <li><a href="#saiji" data-ja="催事のご案内" data-en="Events" data-zh="活动信息">催事のご案内</a></li>
+          <li><a href="#stores" data-ja="店舗情報" data-en="Stores" data-zh="店铺">店舗情報</a></li>
+          <li><a href="#contact" data-ja="お問い合わせ" data-en="Contact" data-zh="联系我们">お問い合わせ</a></li>
+          <li><a href="https://tsuburano.stores.jp/" target="_blank" rel="noopener noreferrer" data-ja="オンラインショップ" data-en="Online Shop" data-zh="网上商店">オンラインショップ</a></li>
+        </ul>
+      </div>
+      <p class="footer-tea-note" data-ja="当店のお菓子は茶師十段である東源兵衛が選び抜いた宇治茶を100%使用しています。" data-en="All sweets are made with 100% Uji tea selected by Genbee Azuma, a 10th-level certified tea master." data-zh="本店所有甜点均使用十段茶师东源兵卫精选的100%宇治茶制作。">当店のお菓子は茶師十段である東源兵衛が選び抜いた宇治茶を100%使用しています。</p>
+      <p class="footer-bottom">&copy; 2025 Ryokuhoen Co., Ltd. All Rights Reserved.</p>
+    </div>
+  </footer>
+
+  <script>
+    // ===== Language Switching =====
+    const langBtns = document.querySelectorAll('.lang-btn');
+    let currentLang = 'ja';
+
+    langBtns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        const lang = btn.dataset.lang;
+        if (lang === currentLang) return;
+        currentLang = lang;
+
+        langBtns.forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        document.documentElement.lang = lang === 'zh' ? 'zh-CN' : lang;
+
+        document.querySelectorAll('[data-' + lang + ']').forEach(el => {
+          const text = el.getAttribute('data-' + lang);
+          if (text === '' || text === null) return;
+          if (el.children.length > 0 && el.tagName !== 'P' && el.tagName !== 'SPAN' && el.tagName !== 'H2' && el.tagName !== 'H3' && el.tagName !== 'DIV') return;
+          el.innerHTML = text;
+        });
+      });
+    });
+
+    // ===== Scroll Nav =====
+    const nav = document.getElementById('nav');
+    let ticking = false;
+    window.addEventListener('scroll', () => {
+      if (!ticking) {
+        requestAnimationFrame(() => {
+          nav.classList.toggle('scrolled', window.scrollY > 60);
+          ticking = false;
+        });
+        ticking = true;
+      }
+    });
+
+    // ===== Mobile Menu =====
+    const hamburger = document.getElementById('hamburger');
+    const mobileMenu = document.getElementById('mobileMenu');
+    const spans = hamburger.querySelectorAll('span');
+
+    hamburger.addEventListener('click', () => {
+      const isActive = mobileMenu.classList.toggle('active');
+      spans[0].style.transform = isActive ? 'rotate(45deg) translate(5px, 5px)' : '';
+      spans[1].style.opacity = isActive ? '0' : '';
+      spans[2].style.transform = isActive ? 'rotate(-45deg) translate(5px, -5px)' : '';
+    });
+
+    mobileMenu.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => {
+        mobileMenu.classList.remove('active');
+        spans.forEach(s => { s.style.transform = ''; s.style.opacity = ''; });
+      });
+    });
+
+    // ===== Scroll Reveal =====
+    const revealEls = document.querySelectorAll('.reveal');
+    const revealObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+
+    revealEls.forEach(el => revealObserver.observe(el));
+
+    // ===== Past Events Accordion =====
+    const saijiToggle = document.getElementById('saijiPastToggle');
+    const saijiList = document.getElementById('saijiPastList');
+    if (saijiToggle && saijiList) {
+      saijiToggle.addEventListener('click', function() {
+        saijiToggle.classList.toggle('open');
+        saijiList.classList.toggle('open');
+      });
+    }
+
+    // ===== Contact Form =====
+    const contactForm = document.getElementById('contactForm');
+    const contactThankyou = document.getElementById('contactThankyou');
+    const formSubmitBtn = document.getElementById('formSubmitBtn');
+
+    contactForm.addEventListener('submit', function(e) {
+      e.preventDefault();
+      formSubmitBtn.disabled = true;
+      formSubmitBtn.textContent = '送信中...';
+
+      const formData = new FormData(contactForm);
+      formData.append('_subject', '【つぶら乃スイーツファクトリー】お問い合わせ');
+      formData.append('_captcha', 'false');
+
+      fetch('https://formsubmit.co/ajax/gojocoffeefactory@outlook.jp', {
+        method: 'POST',
+        body: formData
+      })
+      .then(function(res) { return res.json(); })
+      .then(function() {
+        contactForm.style.display = 'none';
+        contactThankyou.classList.add('active');
+      })
+      .catch(function() {
+        contactForm.style.display = 'none';
+        contactThankyou.classList.add('active');
+      });
+    });
+  </script>
+</body>
+</html>
