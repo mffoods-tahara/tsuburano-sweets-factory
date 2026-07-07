@@ -1898,23 +1898,11 @@
 
       <!-- ▼▼▼ 開催中・開催予定の催事 ▼▼▼ -->
 
-      <div class="saiji-card reveal">
-        <div class="saiji-badge" data-ja="開催中" data-en="Now Open" data-zh="举办中">開催中</div>
-        <h3 class="saiji-store" data-ja="大丸 東京店 1F スイーツセレクション" data-en="Daimaru Tokyo Store 1F Sweets Selection" data-zh="大丸 东京店 1F 甜点精选">大丸 東京店 1F スイーツセレクション</h3>
-        <p class="saiji-date">2026年6月24日（水）〜 6月30日（火）</p>
-        <div class="saiji-divider"></div>
-        <div class="saiji-products-label" data-ja="販売商品" data-en="Products" data-zh="销售商品">販売商品</div>
-        <ul class="saiji-products">
-          <li data-ja="京都 Voyage" data-en="Kyoto Voyage" data-zh="京都 Voyage">京都 Voyage</li>
-          <li data-ja="ブールドネージュ" data-en="Boule de Neige" data-zh="雪球饼干">ブールドネージュ</li>
-          <li data-ja="カヌレアソート" data-en="Canelé Assortment" data-zh="可丽露什锦">カヌレアソート</li>
-          <li data-ja="どらわらび" data-en="Dora-Warabi" data-zh="铜锣蕨饼">どらわらび</li>
-          <li data-ja="おはぎカヌレ" data-en="Ohagi Canelé" data-zh="萩饼可丽露">おはぎカヌレ</li>
-        </ul>
-        <p class="saiji-message" data-ja="お近くにお越しの際は、ぜひお立ち寄りくださいませ。" data-en="We look forward to your visit if you are in the area." data-zh="如果您在附近，欢迎前来光临。">お近くにお越しの際は、ぜひお立ち寄りくださいませ。</p>
-      </div>
+      <p class="saiji-empty" data-ja="現在開催中の催事はございません。次回の催事が決まり次第、こちらでお知らせいたします。" data-en="There are no events currently being held. New events will be announced here as soon as they are scheduled." data-zh="目前没有正在举办的活动。新活动确定后将在此公布。">現在開催中の催事はございません。次回の催事が決まり次第、こちらでお知らせいたします。</p>
 
       <!-- ▲▲▲ 開催中・開催予定の催事ここまで ▲▲▲ -->
+
+      <!-- ※次の催事カードを追加したら、上の saiji-empty の行は削除してください -->
 
       <!--
       ============================================================
@@ -1952,6 +1940,21 @@
         </button>
         <div class="saiji-past-list" id="saijiPastList">
           <!-- 終了した催事をここに追加（新しい順） -->
+          <div class="saiji-card">
+            <div class="saiji-badge ended" data-ja="終了" data-en="Ended" data-zh="已结束">終了</div>
+            <h3 class="saiji-store" data-ja="大丸 東京店 1F スイーツセレクション" data-en="Daimaru Tokyo Store 1F Sweets Selection" data-zh="大丸 东京店 1F 甜点精选">大丸 東京店 1F スイーツセレクション</h3>
+            <p class="saiji-date">2026年6月24日（水）〜 6月30日（火）</p>
+            <div class="saiji-divider"></div>
+            <div class="saiji-products-label" data-ja="販売商品" data-en="Products" data-zh="销售商品">販売商品</div>
+            <ul class="saiji-products">
+              <li data-ja="京都 Voyage" data-en="Kyoto Voyage" data-zh="京都 Voyage">京都 Voyage</li>
+              <li data-ja="ブールドネージュ" data-en="Boule de Neige" data-zh="雪球饼干">ブールドネージュ</li>
+              <li data-ja="カヌレアソート" data-en="Canelé Assortment" data-zh="可丽露什锦">カヌレアソート</li>
+              <li data-ja="どらわらび" data-en="Dora-Warabi" data-zh="铜锣蕨饼">どらわらび</li>
+              <li data-ja="おはぎカヌレ" data-en="Ohagi Canelé" data-zh="萩饼可丽露">おはぎカヌレ</li>
+            </ul>
+            <p class="saiji-message" data-ja="ご来場いただき、誠にありがとうございました。" data-en="Thank you very much for visiting." data-zh="衷心感谢您的光临。">ご来場いただき、誠にありがとうございました。</p>
+          </div>
         </div>
       </div>
       <!-- ▲▲▲ 過去の催事ここまで ▲▲▲ -->
